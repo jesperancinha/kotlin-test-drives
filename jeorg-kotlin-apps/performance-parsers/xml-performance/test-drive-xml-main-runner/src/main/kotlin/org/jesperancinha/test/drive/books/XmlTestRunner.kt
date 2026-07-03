@@ -18,9 +18,9 @@ import java.util.logging.Logger
 open class XmlTestRunner : Callable<Int> {
 
     @Option(names = ["--book-test-file", "-b"], required = true)
-   open var bookTestFile: String? = null
+   open lateinit var bookTestFile: String
 
-    @Option(names = ["--number-of-iterations", "-n"], required = true)
+   @Option(names = ["--number-of-iterations", "-n"], required = true)
     open var numberOfIterations: Int? = null
 
     @Option(names = ["--noop"], required = false)

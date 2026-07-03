@@ -32,7 +32,7 @@ class XmlTestRunnerWorkerTest {
     @Throws(Exception::class)
     fun testRunTests_10_Iter() {
         val runner: XmlTestRunner = object : XmlTestRunner() {
-            override var bookTestFile: String? =
+            override var bookTestFile: String =
                 javaClass.getResource("testXmlFile.xml").shouldNotBeNull().toURI().toPath().toString()
             override var numberOfIterations: Int? = 10
         }
@@ -43,7 +43,7 @@ class XmlTestRunnerWorkerTest {
     @Throws(Exception::class)
     fun testRunTests_10000_Iter() {
         val runner: XmlTestRunner = object : XmlTestRunner() {
-            override var bookTestFile: String? =
+            override var bookTestFile: String =
                 javaClass.getResource("testXmlFile.xml").shouldNotBeNull().toURI().toPath().toString()
             override var numberOfIterations: Int? = 10000
         }
