@@ -58,16 +58,6 @@
                 </executions>
             </plugin>
 
-            <!-- Java compiler -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
-            </plugin>
-
             <!-- Run application -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

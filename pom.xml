@@ -14,7 +14,7 @@
         <exec-maven-plugin.version>3.6.3</exec-maven-plugin.version>
 
         <!-- Build -->
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -366,6 +366,15 @@
                     <version>${omni-coveragereporter-maven-plugin.version}</version>
                     <configuration>
                         <httpRequestParallelization>3</httpRequestParallelization>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
                     </configuration>
                 </plugin>
                 <plugin>
