@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.jesperancinha.omni)
 }
 
-group = "org.jesperancinha.ktd"
+group = "org.jesperancinha.kotlin"
 version = "0.0.0"
 
 repositories {

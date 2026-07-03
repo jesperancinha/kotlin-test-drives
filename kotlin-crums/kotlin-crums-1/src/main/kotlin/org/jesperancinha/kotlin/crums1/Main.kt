@@ -1,0 +1,71 @@
+package org.jesperancinha.kotlin.crums1
+
+import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
+import org.jesperancinha.kotlin.crums1.bertnernie.BertAndErnieLauncher
+import org.jesperancinha.kotlin.crums1.crum10.InfixFunctions
+import org.jesperancinha.kotlin.crums1.crum11.HigherOrderFunctions
+import org.jesperancinha.kotlin.crums1.crum12.NullCoalescingOperatorAndVararg
+import org.jesperancinha.kotlin.crums1.crum13.PreconditionFunctions
+import org.jesperancinha.kotlin.crums1.crum14.StringsInKotlin
+import org.jesperancinha.kotlin.crums1.crum15.SequencesKotlin
+import org.jesperancinha.kotlin.crums1.crum16.NumbersInKotlin
+import org.jesperancinha.kotlin.crums1.crum17.NumberConversions
+import org.jesperancinha.kotlin.crums1.crum18.KotlinScopesInFunctions
+import org.jesperancinha.kotlin.crums1.crum19.ReadWritePropertyInterface
+import org.jesperancinha.kotlin.crums1.crum20.NumberFormattingAndRounding
+import org.jesperancinha.kotlin.crums1.crum3.DataClasses
+import org.jesperancinha.kotlin.crums1.crum4.RangeOperations
+import org.jesperancinha.kotlin.crums1.crum5.StringExtensionFunctions
+import org.jesperancinha.kotlin.crums1.crum6.ExtensionFunctions
+import org.jesperancinha.kotlin.crums1.crum7.ZipFunction
+import org.jesperancinha.kotlin.crums1.crum8.KotlinBasicTypesWithJavaClass
+import org.jesperancinha.kotlin.crums1.crum9.InconstantVariable
+import org.jesperancinha.kotlin.crums1.interop.Archiver
+import org.jesperancinha.kotlin.crums1.records.VinylLauncher
+import org.jesperancinha.kotlin.crums1.sealed.ShapeLauncher
+import org.jesperancinha.kotlin.crums1.synthetic.SyntheticKotlin
+
+object Festival {
+    @JvmStatic
+    fun main(args: Array<String> = emptyArray()) {
+        ConsolerizerComposer.outSpace().magenta("This is the festival!")
+    }
+}
+
+fun main() {
+    PrintToTheConsole.main()
+    HotelRoomAlgorithm.main()
+    DataClasses.main()
+    RangeOperations.main()
+    StringExtensionFunctions.main()
+    ExtensionFunctions.main()
+    ZipFunction.main()
+    KotlinBasicTypesWithJavaClass.main()
+    InconstantVariable.main()
+    InfixFunctions.main()
+    HigherOrderFunctions.main()
+    NullCoalescingOperatorAndVararg.main()
+    PreconditionFunctions.main()
+    StringsInKotlin.main()
+    SequencesKotlin.main()
+    NumbersInKotlin.main()
+    NumberConversions.main()
+    KotlinScopesInFunctions.main()
+    ReadWritePropertyInterface.main()
+    NumberFormattingAndRounding.main()
+    NumbersConversion.main()
+    BertAndErnieLauncher.main()
+    VinylLauncher.main()
+    SuperInterfaces.main()
+    ContextRunning.main()
+    Operators.main()
+    Festival.main()
+    DSLMarkers.main()
+    ImmutableList.main()
+    ShapeLauncher.main()
+    FunctionNames.main()
+    Archiver.main()
+    SyntheticKotlin.main()
+    DefaultInInterface.main()
+}
+
