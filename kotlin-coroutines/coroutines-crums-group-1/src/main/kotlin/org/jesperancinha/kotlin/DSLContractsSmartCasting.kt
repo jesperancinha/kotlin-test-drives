@@ -33,7 +33,7 @@ class DSLContractsSmartCasting {
 class ContractsExtension {
     fun showContract(id: Long?): Long? {
         if (id.isValidID()) {
-            doWithId(id!!)
+            doWithId(id)
         }
         return id
     }

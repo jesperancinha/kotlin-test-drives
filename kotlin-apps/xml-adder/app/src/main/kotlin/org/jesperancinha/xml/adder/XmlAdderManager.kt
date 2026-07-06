@@ -35,8 +35,8 @@ open class XmlAdderManager(
     fileRule: InputStream?
 ) {
     // Document parsing setup instances
-    private val factory = DocumentBuilderFactory.newInstance()
-    private var builder: DocumentBuilder? = null
+    private val factory = DocumentBuilderFactory.newInstance().apply { isNamespaceAware = true }
+    private val builder: DocumentBuilder = factory.newDocumentBuilder()
     private val xPathfactory = XPathFactory.newInstance()
     private val xpath = xPathfactory.newXPath()
     val rule: String
@@ -46,8 +46,6 @@ open class XmlAdderManager(
 
     init {
         rule = getRuleFromIO(fileRule)
-        factory.isNamespaceAware = true
-        builder = factory.newDocumentBuilder()
         fileAddAttributes?.let { readAllAddAttributes(it) }
         fileDeleteAttributes?.let { readAllDeleteAttributes(it) }
     }
@@ -94,12 +92,12 @@ open class XmlAdderManager(
             val doc = getDocument(file)
             var saveFile = false
             for (xpathString in addAttributeManager.xmlAdderInstructionArrayMap.keys) {
-                val instruction = addAttributeManager.xmlAdderInstructionArrayMap[xpathString]
+                val instruction = addAttributeManager.xmlAdderInstructionArrayMap.getValue(xpathString)
                 val expr = xpath.compile(xpathString)
                 val nl = expr.evaluate(doc, XPathConstants.NODESET) as NodeList
                 for (i in 0 until nl.length) {
                     val node = nl.item(i)
-                    val attributesToAdd = instruction!!.attributesToAdd
+                    val attributesToAdd = instruction.attributesToAdd
                     if (node.nodeType == Node.ELEMENT_NODE) {
                         for (attName in attributesToAdd.keys) {
                             val value = attributesToAdd[attName]
@@ -148,7 +146,7 @@ open class XmlAdderManager(
     @Throws(IOException::class, SAXException::class)
     protected fun getDocument(f: File?): Document {
         val `is` = FileInputStream(f)
-        val doc = builder!!.parse(`is`)
+        val doc = builder.parse(`is`)
         `is`.close()
         return doc
     }

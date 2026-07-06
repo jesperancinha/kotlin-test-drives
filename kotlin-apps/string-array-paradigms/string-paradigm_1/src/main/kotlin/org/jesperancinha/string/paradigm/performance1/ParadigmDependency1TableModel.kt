@@ -24,9 +24,9 @@ class ParadigmDependency1TableModel : AbstractTableModel() {
         return columnCount
     }
 
-    override fun getValueAt(rowIndex: Int, columnIndex: Int): Any {
+    override fun getValueAt(rowIndex: Int, columnIndex: Int): String? {
         val dependency = dependencies[rowIndex]
-        return dependency.getSubDependencyElement(columnIndex)!!.intern()
+        return dependency.getSubDependencyElement(columnIndex)?.intern()
     }
 
     fun clear() {
