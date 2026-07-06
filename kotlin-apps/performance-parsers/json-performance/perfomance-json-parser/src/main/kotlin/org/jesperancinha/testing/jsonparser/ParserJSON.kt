@@ -40,27 +40,21 @@ class ParserJSON(fileName: String) {
                 changedColor.red, changedColor.green,
                 changedColor.blue
             )
-            var hexString = Integer.toHexString(changedColor.rgb and 0x00ffffff)
+            val rawHexString = Integer.toHexString(changedColor.rgb and 0x00ffffff)
             val zeroes = "000000"
-            hexString = zeroes.substring(hexString.length) + hexString
+            val hexString = zeroes.substring(rawHexString.length) + rawHexString
             "#$hexString"
         } ?: "#000000"
     }
 
     fun toJSON(brightness: Float): String {
-        var i: Iterator<Map.Entry<String, IntArray>> = colorMap.entries.iterator()
         val jsonObject = JSONObject()
         val newColorMap = HashMap<String, IntArray>()
-        do {
-            val (key, value) = i.next()
-            newColorMap[key] = value
-        } while (i.hasNext())
-        i = newColorMap.entries.iterator()
-        do {
-            val (key) = i.next()
+        colorMap.entries.forEach { (key, value) -> newColorMap[key] = value }
+        newColorMap.keys.forEach { key ->
             val hexString = getColour(key, brightness)
             jsonObject[key] = hexString
-        } while (i.hasNext())
+        }
         return jsonObject.toJSONString()
     }
 

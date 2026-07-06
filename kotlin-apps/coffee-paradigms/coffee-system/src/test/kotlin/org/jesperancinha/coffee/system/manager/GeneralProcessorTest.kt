@@ -43,13 +43,13 @@ class GeneralProcessorTest {
     @InjectMockKs
     lateinit var generalProcessor: GeneralProcessor
 
-    private var preProcessor: PreProcessor = mockk()
+    private val preProcessor: PreProcessor = mockk()
 
-    private var coffeeProcessor: CoffeeProcessor = mockk()
+    private val coffeeProcessor: CoffeeProcessor = mockk()
 
-    private var paymentProcessor: PaymentProcessor = mockk()
+    private val paymentProcessor: PaymentProcessor = mockk()
 
-    private var postProcessor: PostProcessor = mockk()
+    private val postProcessor: PostProcessor = mockk()
 
     @MockK(relaxed = true)
     lateinit var queueCoffee: QueueCoffee
@@ -63,7 +63,7 @@ class GeneralProcessorTest {
     @MockK
     lateinit var queuePreActivity: QueuePreActivityImpl
 
-    private var future: Future<Boolean> = mockk()
+    private val future: Future<Boolean> = mockk()
 
     private val employee: Employee = mockk()
 

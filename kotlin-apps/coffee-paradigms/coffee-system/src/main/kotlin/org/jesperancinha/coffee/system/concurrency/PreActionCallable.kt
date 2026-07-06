@@ -31,7 +31,7 @@ class PreActionCallable(
     }
 
     override fun call(): Boolean {
-        logger.info("EmployeeCallable {} is waiting in line", employee?.name)
+        logger.info("EmployeeCallable {} is waiting in line", employee.name)
         actionDescriptorList.forEach(
             Consumer { actionDescriptor: ActionDescriptor ->
                 logger.info(MessageFormat.format("Starting with {0}", actionDescriptor.description))

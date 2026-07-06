@@ -19,10 +19,7 @@ abstract class Queue {
      * @param name
      */
     fun setQueueSize(queueSize: Int, name: String) {
-        var currentSize = numberToCreateMap[name]
-        if (currentSize == null) {
-            currentSize = 0
-        }
+        val currentSize = numberToCreateMap[name] ?: 0
         numberToCreateMap[name] = currentSize + queueSize
     }
 
@@ -38,7 +35,7 @@ abstract class Queue {
                     ExecutorServiceHelper.shutDownExecutorService(currentExecutor)
                 }
                 val managedExecutorService =  //
-                    Executors.newFixedThreadPool(numberToCreateMap[name]!!) as ThreadPoolExecutor
+                    Executors.newFixedThreadPool(numberToCreateMap.getValue(name)) as ThreadPoolExecutor
                 executorServiceMap[name] = managedExecutorService
             }
         )

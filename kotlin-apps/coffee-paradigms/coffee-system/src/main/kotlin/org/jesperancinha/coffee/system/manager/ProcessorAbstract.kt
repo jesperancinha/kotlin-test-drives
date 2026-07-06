@@ -20,8 +20,10 @@ abstract class ProcessorAbstract {
         queueCallable.allCallables.forEach { booleanCallable ->
                 val executorServiceMap = executorServiceQueue.executorServiceMap
                 val executorName = getExecutorName(booleanCallable)
-                val threadPoolExecutor = executorServiceMap[executorName]
-                val submitResult = threadPoolExecutor!!.submit(booleanCallable)
+                val threadPoolExecutor = requireNotNull(executorServiceMap[executorName]) {
+                    "No executor found for $executorName"
+                }
+                val submitResult = threadPoolExecutor.submit(booleanCallable)
                 addSubmitResult(submitResult, queueCallable)
             }
     }

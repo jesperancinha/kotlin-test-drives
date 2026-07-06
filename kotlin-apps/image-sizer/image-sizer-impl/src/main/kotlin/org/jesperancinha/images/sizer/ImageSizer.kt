@@ -15,7 +15,8 @@ object ImageSizer {
         parseArguments(args, options)
         val dimensions = options.dimensions
         val dims = dimensions?.split("x")?.toTypedArray() ?: throw RuntimeException("Please provide dimensions")
-        val dotSplitsDestinationFileName = options.destinationFile!!.split("\\.").toTypedArray()
+        val destinationFile = options.destinationFile ?: throw RuntimeException("Please provide Destination file")
+        val dotSplitsDestinationFileName = destinationFile.split("\\.").toTypedArray()
         val worker = ImageSizerWorker(
             destinationFile = options.destinationFile,
             sourceFile = options.sourceFile ?: throw RuntimeException("Please provide Source sile"),

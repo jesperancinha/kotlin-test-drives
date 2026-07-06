@@ -52,11 +52,12 @@ class InputGeneratorOptions : Callable<Int> {
         logger.info("Filename:$fileName")
         file.createNewFile()
         BufferedOutputStream(FileOutputStream(file)).use { bo ->
-            var currentNumber = getNextNumber(0, maxIncrements)
-            bo.write(toBytes("" + currentNumber))
-            for (i in numberOfElements downTo 2) {
-                currentNumber = getNextNumber(currentNumber, maxIncrements)
-                bo.write(getFormattedNumber(currentNumber))
+            val firstNumber = getNextNumber(0, maxIncrements)
+            bo.write(toBytes("" + firstNumber))
+            (numberOfElements downTo 2).fold(firstNumber) { current, _ ->
+                val nextNumber = getNextNumber(current, maxIncrements)
+                bo.write(getFormattedNumber(nextNumber))
+                nextNumber
             }
         }
         logger.info(

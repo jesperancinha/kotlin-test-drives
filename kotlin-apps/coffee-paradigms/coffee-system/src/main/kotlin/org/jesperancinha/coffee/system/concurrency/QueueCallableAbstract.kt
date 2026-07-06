@@ -22,7 +22,8 @@ abstract class QueueCallableAbstract : QueueCallable {
         fun waitForAllFutures(allResults: MutableList<Future<Boolean>>, logger: Logger) {
             allResults.forEach { booleanFuture: Future<Boolean> ->
                 try {
-                    if (booleanFuture.get() != null && !booleanFuture.get()!!) {
+                    val result = booleanFuture.get()
+                    if (result != null && !result) {
                         logger.error(ProcessorAbstract.SCHEDULED_TASK_FAILED_TO_EXECUTE)
                     }
                 } catch (e: NullPointerException) {

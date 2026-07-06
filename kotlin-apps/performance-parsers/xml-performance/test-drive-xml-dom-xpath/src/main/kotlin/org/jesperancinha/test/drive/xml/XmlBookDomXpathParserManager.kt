@@ -44,7 +44,7 @@ class XmlBookDomXpathParserManager(ioStream: InputStream) : XmlBookParserBuilder
 
     override fun getBookTitle(bookNumber: Int): String? {
         return try {
-            xpath!!.evaluate(NAME, bookList!!.item(bookNumber), XPathConstants.STRING) as String
+            xpath.evaluate(NAME, bookList.item(bookNumber), XPathConstants.STRING) as String
         } catch (e: XPathExpressionException) {
             e.printStackTrace()
             null

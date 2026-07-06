@@ -10,10 +10,10 @@ import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
 
 class XmlBookDomParserManager(ioStream: InputStream) : XmlBookParserBuilder(ioStream) {
-    private var document: Document? = null
-    private var bookList: NodeList? = null
+    private lateinit var document: Document
+    private lateinit var bookList: NodeList
     override fun getBookTitle(bookNumber: Int): String? {
-        return bookList?.item(bookNumber)?.attributes?.getNamedItem("name")?.nodeValue
+        return bookList.item(bookNumber)?.attributes?.getNamedItem("name")?.nodeValue
     }
 
     override fun getNumberOfPages(bookNumber: Int): Int {
@@ -30,7 +30,7 @@ class XmlBookDomParserManager(ioStream: InputStream) : XmlBookParserBuilder(ioSt
     }
 
     override val numberOfBooks: Int
-        get() = bookList?.length ?: 0
+        get() = bookList.length
 
     @Throws(SAXException::class, IOException::class, ParserConfigurationException::class)
     override fun init() {
@@ -38,11 +38,11 @@ class XmlBookDomParserManager(ioStream: InputStream) : XmlBookParserBuilder(ioSt
         dbf.isNamespaceAware = true
         val db = dbf.newDocumentBuilder()
         document = db.parse(ioStream)
-        bookList = document?.getElementsByTagNameNS(HTTP_WWW_BOOKSHELFEXAMPLE_COM, BOOK)
+        bookList = document.getElementsByTagNameNS(HTTP_WWW_BOOKSHELFEXAMPLE_COM, BOOK)
     }
 
     private fun getValueFromNode(bookNumber: Int, nodeName: String): String? {
-        val bookItem = bookList?.item(bookNumber) ?: return null
+        val bookItem = bookList.item(bookNumber) ?: return null
         var currentNode = bookItem.firstChild
         while (currentNode != null && 
             (currentNode.nodeType == Node.TEXT_NODE || currentNode.namespaceURI == HTTP_WWW_BOOKSHELFEXAMPLE_COM)
