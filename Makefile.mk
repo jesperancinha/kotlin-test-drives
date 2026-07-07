@@ -1,5 +1,5 @@
 SHELL := /bin/sh
-GRADLE_VERSION ?= 9.2.1
+GRADLE_VERSION ?= 9.6.1
 
 first:
 	make buildw build-maven

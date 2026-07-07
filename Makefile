@@ -1,8 +1,8 @@
 include Makefile.mk
 
-MODULE_LOCATIONS := jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui \
-					jeorg-kotlin-arrow-optics/jeorg-kotlin-optics-crums-1 \
-					jeorg-kotlin-arrow-optics/jeorg-kotlin-optics-crums-2
+MODULE_LOCATIONS := kotlin-apps/microchip-maker/microchip-maker-gui \
+					kotlin-arrow-optics/kotlin-optics-crums-1 \
+					kotlin-arrow-optics/kotlin-optics-crums-2
 first:
 	make b
 
@@ -10,15 +10,15 @@ b: clean build
 
 clean:
 	if [ -d kotlin-js-store ]; then rm -r kotlin-js-store; fi
-	if [ -d jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store ]; then rm -r jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store; fi
-	if [ -d jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/build ]; then rm -r jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/build; fi
+	if [ -d kotlin-apps/microchip-maker/microchip-maker-gui/kotlin-js-store ]; then rm -r kotlin-apps/microchip-maker/microchip-maker-gui/kotlin-js-store; fi
+	if [ -d kotlin-apps/microchip-maker/microchip-maker-gui/build ]; then rm -r kotlin-apps/microchip-maker/microchip-maker-gui/build; fi
 build: build-gradle build-maven
 build-maven:
 	mvn clean install
 build-gradle: clean
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
-	gradle wrapper --gradle-version $(GRADLE_VERSION); \
-	cd jeorg-kotlin-apps/string-array-paradigms; \
+	gradle wrapper; \
+	cd kotlin-apps/string-array-paradigms; \
 		make publish
 	gradle --stop
 	gradle clean build test
@@ -27,7 +27,7 @@ build-microchip-gradle:
 	./gradlew build test
 	echo "Building Microchip Project..."; \
 	export CURRENT=$(shell pwd); \
-	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui; \
+	cd kotlin-apps/microchip-maker/microchip-maker-gui; \
 	make b; \
 	cd $$CURRENT;
 upgrade:
@@ -35,10 +35,10 @@ upgrade:
   		echo "Upgrading $$location..."; \
 	done
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
-	gradle wrapper --gradle-version $(GRADLE_VERSION) --stacktrace;
+	gradle wrapper --stacktrace;
 build-chip-maker:
-	cd jeorg-kotlin-apps/jeorg-microchip-maker && mvn clean install
-	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui && gradle build jsTest
+	cd kotlin-apps/microchip-maker && mvn clean install
+	cd kotlin-apps/microchip-maker/microchip-maker-gui && gradle build jsTest
 upgrade-system:
 	sudo apt upgrade
 	sudo apt update

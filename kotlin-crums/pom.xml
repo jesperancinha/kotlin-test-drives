@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.jesperancinha.kotlin</groupId>
+        <artifactId>kotlin-test-drives</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <name>JEOrg :: KTD :: Crums :: Parent</name>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>kotlin-crums</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>kotlin-crums-1</module>
+        <module>kotlin-crums-2</module>
+        <module>kotlin-crums-3</module>
+        <module>kotlin-crums-4-variance</module>
+    </modules>
+    <packaging>pom</packaging>
+</project>

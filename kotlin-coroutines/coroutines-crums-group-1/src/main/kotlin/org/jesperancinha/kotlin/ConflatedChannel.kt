@@ -1,0 +1,33 @@
+package org.jesperancinha.kotlin
+
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
+
+class ConflatedChannel {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String> = emptyArray()): Unit = runBlocking {
+            val conflatedChannel = Channel<Int>(Channel.CONFLATED)
+
+            launch {
+                repeat(5) { value ->
+                    println("Sending: $value")
+                    conflatedChannel.send(value)
+                    delay(500.milliseconds)
+                }
+                conflatedChannel.close()
+            }
+
+            launch {
+                conflatedChannel.receiveAsFlow().collect { value ->
+                    println("Received: $value")
+                    delay(1000.milliseconds)
+                }
+            }
+        }
+    }
+}

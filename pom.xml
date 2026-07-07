@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.jesperancinha.ktd</groupId>
-    <artifactId>jeorg-kotlin-test-drives</artifactId>
+    <groupId>org.jesperancinha.kotlin</groupId>
+    <artifactId>kotlin-test-drives</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -90,13 +90,13 @@
     </properties>
 
     <modules>
-        <module>jeorg-kotlin-crums</module>
-        <module>jeorg-kotlin-utilities</module>
-        <module>jeorg-kotlin-masters</module>
-        <module>jeorg-kotlin-apps</module>
-        <module>jeorg-kotlin-coroutines</module>
-        <module>jeorg-kotlin-coroutines/coroutines-cancellation-examples</module>
-        <module>jeorg-kotlin-coroutines/coroutines-swing</module>
+        <module>kotlin-crums</module>
+        <module>kotlin-utilities</module>
+        <module>kotlin-masters</module>
+        <module>kotlin-apps</module>
+        <module>kotlin-coroutines</module>
+        <module>kotlin-coroutines/coroutines-cancellation-examples</module>
+        <module>kotlin-coroutines/coroutines-swing</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -367,6 +367,25 @@
                     <configuration>
                         <httpRequestParallelization>3</httpRequestParallelization>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven-failsafe-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
