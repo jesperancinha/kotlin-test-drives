@@ -7,6 +7,7 @@ import kotlinx.coroutines.runBlocking
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import java.time.LocalDateTime
 import java.util.*
+import kotlin.time.Duration.Companion.milliseconds
 
 class ChunkParallelization {
     companion object {
@@ -34,7 +35,7 @@ class ChunkParallelization {
                 val chunkId = UUID.randomUUID()
                 chunk.map {
                     async {
-                        delay((Math.random() * 100).toLong())
+                        delay((Math.random() * 100).toLong().milliseconds)
                         logger.info("Chunk $chunkId run at ${LocalDateTime.now()} with letter $it")
                     }
                 }

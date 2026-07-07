@@ -121,7 +121,7 @@ class CrumTen {
                 .orange("The same set can be generated this with a mutableSSet")
                 .reset()
 
-            var mutableSetOfVolumes = mutableSetOf<String>()
+            val mutableSetOfVolumes = mutableSetOf<String>()
             (1..1000)
                 .forEach {
                     mutableSetOfVolumes += harryPotterVolumesExtendedTry.random()

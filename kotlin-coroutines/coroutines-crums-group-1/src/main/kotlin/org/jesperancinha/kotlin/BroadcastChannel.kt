@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 class BroadcastChannel {
@@ -28,7 +29,7 @@ class BroadcastChannel {
 
                     repeat(5) {
                         sharedFlow.emit(it)
-                        delay(100)
+                        delay(100.milliseconds)
                     }
                 }
             }

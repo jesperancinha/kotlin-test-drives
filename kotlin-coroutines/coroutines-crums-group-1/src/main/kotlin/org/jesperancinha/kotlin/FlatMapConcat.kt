@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class FlatMapConcat {
     companion object {
@@ -14,12 +15,12 @@ class FlatMapConcat {
         fun main(args: Array<String> = emptyArray()): kotlin.Unit = runBlocking {
             val flow1 = flow {
                 emit("First flow: A")
-                kotlinx.coroutines.delay(100)
+                kotlinx.coroutines.delay(100.milliseconds)
                 emit("First flow: B")
             }
             val flow2 = flow {
                 emit("Second flow: X")
-                kotlinx.coroutines.delay(100)
+                kotlinx.coroutines.delay(100.milliseconds)
                 emit("Second flow: Y")
             }
             val flowOfFlows = flowOf(
@@ -39,12 +40,12 @@ class FlatMapConcat {
         private fun testWithMerge() = runBlocking {
             val flow1 = flow {
                 emit("First flow: A")
-                kotlinx.coroutines.delay(100)
+                kotlinx.coroutines.delay(100.milliseconds)
                 emit("First flow: B")
             }
             val flow2 = flow {
                 emit("Second flow: X")
-                kotlinx.coroutines.delay(100)
+                kotlinx.coroutines.delay(100.milliseconds)
                 emit("Second flow: Y")
             }
             merge(flow1, flow2)

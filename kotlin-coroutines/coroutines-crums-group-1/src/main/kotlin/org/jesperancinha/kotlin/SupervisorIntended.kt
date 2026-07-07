@@ -3,6 +3,7 @@ package org.jesperancinha.kotlin
 import kotlinx.coroutines.*
 import java.time.LocalDateTime
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 class SupervisorIntended {
     companion object {
@@ -32,17 +33,17 @@ class SupervisorIntended {
             supervisorScope {
                 println(this.coroutineContext)
                 val launch = launch {
-                    delay(1000)
+                    delay(1000.milliseconds)
                     throw RuntimeException("I have an error and this is it!")
                 }
                 println("The type is ${launch.job::class.java}")
                 launch {
-                    delay(2000)
+                    delay(2000.milliseconds)
                     println("Nothing wrong here")
                 }
             }
             println(this.coroutineContext)
-            delay(1000)
+            delay(1000.milliseconds)
             println("And I keep going...")
             println("****** Ending test suspend function at ${LocalDateTime.now()}")
 

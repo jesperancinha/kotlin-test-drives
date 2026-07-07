@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import kotlin.concurrent.thread
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 class UniversalLauncher {
 
@@ -34,24 +35,24 @@ class UniversalLauncher {
                     measureTimeMillis {
                         async {
                             logger.info("I'm a coroutine running asynchronously and I am not nested")
-                            delay(1000)
+                            delay(1000.milliseconds)
                             logger.info("Now I'm done!")
                         }.join()
                         async {
                             logger.info("I'm a coroutine running asynchronously and I am not nested")
-                            delay(1000)
+                            delay(1000.milliseconds)
                             logger.info("Now I'm done!")
                         }.join()
                     }.let { logger.info("The first two asyncs with 1s delay took 2 seconds to run with join(): $it ms") }
                     measureTimeMillis {
                         async {
                             logger.info("I'm a coroutine running asynchronously and I am not nested")
-                            delay(1000)
+                            delay(1000.milliseconds)
                             logger.info("Now I'm done!")
                         }.await()
                         async {
                             logger.info("I'm a coroutine running asynchronously and I am not nested")
-                            delay(1000)
+                            delay(1000.milliseconds)
                             logger.info("Now I'm done!")
                         }.await()
                         launch {
@@ -69,12 +70,12 @@ class UniversalLauncher {
                         listOf(
                             async {
                                 logger.info("I'm a coroutine running with async and I am not nested")
-                                delay(1000)
+                                delay(1000.milliseconds)
                                 logger.info("Now I'm done!")
                             },
                             async {
                                 logger.info("I'm a coroutine running with async and I am not nested")
-                                delay(1000)
+                                delay(1000.milliseconds)
                                 logger.info("Now I'm done!")
                             }).awaitAll()
                     }
@@ -88,12 +89,12 @@ class UniversalLauncher {
                     coroutineScope {
                         launch {
                             logger.info("I'm a coroutine running with launch and I am not nested")
-                            delay(1000)
+                            delay(1000.milliseconds)
                             logger.info("Now I'm done!")
                         }
                         launch {
                             logger.info("I'm a coroutine running with launch and I am not nested")
-                            delay(1000)
+                            delay(1000.milliseconds)
                             logger.info("Now I'm done!")
                         }
                     }

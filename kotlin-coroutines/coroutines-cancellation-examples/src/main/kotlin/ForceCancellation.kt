@@ -6,6 +6,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.FileNotFoundException
 import kotlin.random.Random
+import kotlin.time.Duration.Companion.milliseconds
 
 
 /**
@@ -16,7 +17,7 @@ import kotlin.random.Random
 object ForceCancellation {
     suspend fun simulateBlockingIOMethod(): String {
         println("Started blocking I/O operation")
-        delay(2000)
+        delay(2000.milliseconds)
         if (Random.nextBoolean()) {
             throw FileNotFoundException("File not found!")  // Simulate possible error
         }
@@ -35,11 +36,11 @@ object ForceCancellation {
                 println("Exception caught: ${e.message}")
             }
         }
-        delay(1000)
+        delay(1000.milliseconds)
         coroutineThread?.interrupt()
         println("Cancelling coroutine...")
         job.cancel()
-        delay(3000)
+        delay(3000.milliseconds)
         println("Main function ends")
     }
 }

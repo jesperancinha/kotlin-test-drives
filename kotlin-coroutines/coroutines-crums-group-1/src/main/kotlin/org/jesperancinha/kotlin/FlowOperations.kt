@@ -4,6 +4,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 class FlowOperations {
     companion object {
@@ -13,7 +14,7 @@ class FlowOperations {
                 var value = 1
                 while (value <= 5) {
                     emit(value)
-                    delay(300)
+                    delay(300.milliseconds)
                     value++
                 }
             }
@@ -22,7 +23,7 @@ class FlowOperations {
                 val letters = listOf("A", "B", "C", "D", "E")
                 for (letter in letters) {
                     emit(letter)
-                    delay(500)
+                    delay(500.milliseconds)
                 }
             }
 

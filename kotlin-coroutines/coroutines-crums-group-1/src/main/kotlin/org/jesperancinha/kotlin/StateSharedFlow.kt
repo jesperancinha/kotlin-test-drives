@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 class StateSharedFlow {
@@ -38,16 +39,16 @@ class StateSharedFlow {
                     }
                 }
 
-                delay(1000)
+                delay(1000.milliseconds)
                 sharedFlow.emit(1)
 
-                delay(1000)
+                delay(1000.milliseconds)
                 sharedFlow.emit(2)
 
-                delay(1000)
+                delay(1000.milliseconds)
                 sharedFlow.emit(3)
 
-                delay(2000)
+                delay(2000.milliseconds)
             }
         }
 
@@ -67,13 +68,13 @@ class StateSharedFlow {
                     }
                 }
 
-                delay(1000)
+                delay(1000.milliseconds)
                 stateFlow.value = 1
 
-                delay(1000)
+                delay(1000.milliseconds)
                 stateFlow.value = 2
 
-                delay(2000)
+                delay(2000.milliseconds)
             }
         }
     }

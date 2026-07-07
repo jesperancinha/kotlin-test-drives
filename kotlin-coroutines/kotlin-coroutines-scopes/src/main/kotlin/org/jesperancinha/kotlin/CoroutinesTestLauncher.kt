@@ -12,6 +12,7 @@ import java.lang.IllegalStateException
 import java.time.LocalDateTime
 import java.util.*
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 object CoroutinesTestLauncher {
     private val logger = object {
@@ -102,7 +103,7 @@ object CoroutinesTestLauncher {
         try {
             val job = CoroutineScope(Main).launch {
                 launch {
-                    delay(100)
+                    delay(100.milliseconds)
                     logger.info("This is cat @ ${LocalDateTime.now()}")
                 }
                 launch {
@@ -122,7 +123,7 @@ object CoroutinesTestLauncher {
         val job = CoroutineScope(Unconfined).launch {
             launch {
                 logger.infoThread("Cat Before thread ==> ${Thread.currentThread()}")
-                delay(100)
+                delay(100.milliseconds)
                 logger.info("This is cat @ ${LocalDateTime.now()}")
                 logger.info(coroutineContext)
                 logger.infoThread("Cat After Resume thread ==> ${Thread.currentThread()}")
@@ -144,7 +145,7 @@ object CoroutinesTestLauncher {
         CoroutineScope(Unconfined).launch {
             withContext(Unconfined) {
                 withContext(Unconfined) {
-                    delay(100)
+                    delay(100.milliseconds)
                     logger.infoThread("Cat Before thread ==> **** ${Thread.currentThread()} ****")
                     logger.info("This is cat @ ${LocalDateTime.now()}")
                     logger.info(coroutineContext)
@@ -167,7 +168,7 @@ object CoroutinesTestLauncher {
         logger.infoTextSeparator("Default -> Default and IO exhibit the same behaviour if not dealing with enough launches. In this case the parent and the children run concurrently")
         val job = CoroutineScope(Default).launch {
             launch {
-                delay(100)
+                delay(100.milliseconds)
                 logger.info("This is cat @ ${LocalDateTime.now()}")
             }
             launch {
@@ -183,7 +184,7 @@ object CoroutinesTestLauncher {
         logger.infoTextSeparator("IO -> Default and IO exhibit the same behaviour if not dealing with enough launches. In this case the parent and the children run concurrently")
         val job = CoroutineScope(IO).launch {
             launch {
-                delay(100)
+                delay(100.milliseconds)
                 logger.info("This is cat @ ${LocalDateTime.now()}")
             }
             launch {

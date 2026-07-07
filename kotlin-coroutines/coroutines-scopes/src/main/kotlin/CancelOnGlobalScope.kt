@@ -1,5 +1,6 @@
 import kotlinx.coroutines.*
 import java.lang.Thread.*
+import kotlin.time.Duration.Companion.milliseconds
 
 object CancelOnGlobalScope {
     @JvmStatic
@@ -9,7 +10,7 @@ object CancelOnGlobalScope {
             coroutineScope {
                 launch {
                     println("Current Thread is ${currentThread()}, and context is ${coroutineContext}")
-                    delay(1000)
+                    delay(1000.milliseconds)
                     println("This will be cancelled")
                 }
                 println("Current Thread is ${currentThread()}, and context is ${coroutineContext}")
@@ -32,7 +33,7 @@ object CancelOnRunBlocking {
             coroutineScope {
                 launch {
                     println("Current Thread is ${currentThread()}, and context is ${coroutineContext}")
-                    delay(1000)
+                    delay(1000.milliseconds)
                     println("This will be cancelled")
                 }
                 println("Current Thread is ${currentThread()}, and context is ${coroutineContext}")

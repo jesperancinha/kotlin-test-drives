@@ -5,6 +5,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class Debouncing {
     companion object {
@@ -13,11 +14,11 @@ class Debouncing {
         fun main(arg: Array<String> = emptyArray()) = runBlocking {
             val searchQueryFlow = flow {
                 emit("K")
-                delay(100)
+                delay(100.milliseconds)
                 emit("Ko")
-                delay(300)
+                delay(300.milliseconds)
                 emit("Kot")
-                delay(600)
+                delay(600.milliseconds)
                 emit("Kotlin")
             }
 

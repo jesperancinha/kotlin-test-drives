@@ -12,6 +12,7 @@ import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JLabel
 import javax.swing.SwingUtilities
+import kotlin.time.Duration.Companion.milliseconds
 
 fun main() {
     SwingUtilities.invokeLater {
@@ -22,7 +23,7 @@ fun main() {
         button.addActionListener {
             CoroutineScope(Dispatchers.Main).launch {
                 label.text = "Running task..."
-                delay(3000)
+                delay(3000.milliseconds)
                 label.text = "Task Completed!"
             }
         }

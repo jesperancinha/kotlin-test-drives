@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import java.lang.Thread.sleep
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
+import kotlin.time.Duration.Companion.milliseconds
 
 class SuspendCoroutine {
     companion object {
@@ -11,7 +12,7 @@ class SuspendCoroutine {
         fun main(args: Array<String> = emptyArray()): kotlin.Unit = runBlocking(Dispatchers.IO) {
             val first = launch {
                 coroutineScope {
-                    delay(2000)
+                    delay(2000.milliseconds)
                     println("This is the last. We can only delay from a coroutine body.")
                 }
             }

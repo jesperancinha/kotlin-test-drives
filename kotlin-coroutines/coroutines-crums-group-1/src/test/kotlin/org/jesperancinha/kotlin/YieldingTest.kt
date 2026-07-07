@@ -6,6 +6,7 @@ import io.kotest.matchers.nulls.shouldNotBeNull
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.measureTime
 
@@ -21,7 +22,7 @@ class YieldingTest {
                             yield()
                         }
                     }
-                    delay(1)
+                    delay(1.milliseconds)
                     job.shouldNotBeNull()
                 }
             }
@@ -36,7 +37,7 @@ class YieldingTest {
                 yield()
             }
         }
-        delay(1)
+        delay(1.milliseconds)
         job.cancelAndJoin()
         job.isCancelled.shouldBeTrue()
     }
@@ -45,10 +46,10 @@ class YieldingTest {
     fun `should cancel with runTest`() = runTest {
         val job = backgroundScope.launch {
             while (isActive) {
-                delay(1)
+                delay(1.milliseconds)
             }
         }
-        delay(10)
+        delay(10.milliseconds)
         job.cancelAndJoin()
         job.isCancelled.shouldBeTrue()
     }

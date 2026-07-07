@@ -6,7 +6,7 @@ import java.math.BigInteger
 
 class LazyRiddle(
     private val radius: Int = 10,
-    private var amount: Int = 5
+    private val amount: Int = 5
 ) {
 
     lateinit var test: BigInteger

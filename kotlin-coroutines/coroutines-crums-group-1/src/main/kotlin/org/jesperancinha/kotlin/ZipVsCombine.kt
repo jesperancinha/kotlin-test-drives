@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 class ZipVsCombine {
@@ -21,13 +22,13 @@ class ZipVsCombine {
         private suspend fun zipExample() {
             val mainBodyFlow = flow {
                 emit("Body1")
-                delay(100) 
+                delay(100.milliseconds)
                 emit("Body2")
             }
 
             val wheelsFlow = flow {
                 emit(listOf("Wheel1", "Wheel2", "Wheel3", "Wheel4"))
-                delay(200)
+                delay(200.milliseconds)
                 emit(listOf("Wheel5", "Wheel6", "Wheel7", "Wheel8"))
             }
 
@@ -41,13 +42,13 @@ class ZipVsCombine {
         private suspend fun combineExample() {
             val mainBodyFlow = flow {
                 emit("Body1")
-                delay(100) 
+                delay(100.milliseconds)
                 emit("Body2")
             }
 
             val wheelsFlow = flow {
                 emit(listOf("Wheel1", "Wheel2", "Wheel3", "Wheel4"))
-                delay(200) 
+                delay(200.milliseconds)
                 emit(listOf("Wheel5", "Wheel6", "Wheel7", "Wheel8"))
             }
 

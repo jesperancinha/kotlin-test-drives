@@ -6,6 +6,7 @@ import kotlinx.coroutines.channels.actor
 import kotlinx.coroutines.channels.produce
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class ActorsAndProducers {
     companion object {
@@ -29,7 +30,7 @@ class ActorsAndProducers {
             counter.send(20)
             counter.send(30)
 
-            delay(500)
+            delay(500.milliseconds)
             counter.close()
         }
 
@@ -37,7 +38,7 @@ class ActorsAndProducers {
         private fun producerExample()= runBlocking {
             val channel = produce {
                 for (i in 1..5) {
-                    delay(100)
+                    delay(100.milliseconds)
                     send(i)
                 }
             }

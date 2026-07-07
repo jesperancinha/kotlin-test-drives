@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.time.LocalDateTime
+import kotlin.time.Duration.Companion.milliseconds
 
 class MutableSharedFlowCheck {
 
@@ -31,7 +32,7 @@ class MutableSharedFlowCheck {
                     }
 
                     repeat(5) {
-                        delay(100)
+                        delay(100.milliseconds)
                         stateFlow.value = it + 1
                         stateFlow.value = it + 1
                     }
@@ -46,7 +47,7 @@ class MutableSharedFlowCheck {
                     }
 
                     repeat(5) {
-                        delay(100)
+                        delay(100.milliseconds)
                         sharedFlow.emit(it + 1)
                     }
 
@@ -56,7 +57,7 @@ class MutableSharedFlowCheck {
                         }
                     }
 
-                    delay(1000)
+                    delay(1000.milliseconds)
                     sharedFlowJob1.cancel()
                     sharedFlowJob2.cancel()
                     stateFlowJob1.cancel()

@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.firstOrNull
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
+import kotlin.time.Duration.Companion.milliseconds
 
 class MutableFlow {
 
@@ -35,7 +36,7 @@ class MutableFlow {
                 sendFishes(mutableFlow)
                 logger.info("The second fish we get is ${mutableFlow.firstOrNull { it.contains("od") }}")
             }
-            delay(5000)
+            delay(5000.milliseconds)
             logger.infoTitle("We get Sardine and Codfish")
             logger.infoSubTitle("Testing with no replay and filtering without emitting")
             CoroutineScope(Dispatchers.IO).launch {
@@ -45,7 +46,7 @@ class MutableFlow {
                 logger.info("The second fish we get is ${mutableFlow.firstOrNull { it.contains("od") }}")
                 sendFishes(mutableFlow)
             }
-            delay(5000)
+            delay(5000.milliseconds)
             logger.infoTitle("We get nothing")
             logger.infoSubTitle("Testing with replay. For each query, the stream replays the last 4 replay elements")
             CoroutineScope(Dispatchers.IO).launch {
@@ -54,19 +55,19 @@ class MutableFlow {
                 logger.info("The first fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("ardine") }}")
                 logger.info("The second fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("od") }}")
                 sendExtraFishes(mutableFlowWithReplay)
-                delay(200)
+                delay(200.milliseconds)
                 logger.info("The first fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("ardine") }}")
                 logger.info("The second fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("od") }}")
                 logger.info("The third fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("una") }}")
                 logger.info("The fourth fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("alo") }}")
 
             }
-            delay(5000)
+            delay(5000.milliseconds)
             logger.infoTitle("We get only Sardine and Codfish. The 4 fishes later sent have no sardine and are now cached")
             CoroutineScope(Dispatchers.IO).launch {
                 logger.infoTitle("Mutable Flows with replay 4 ... continued ... We now get the last 4 fishes")
                 listOf( async {
-                    delay( 200)
+                    delay(200.milliseconds)
                     sendExtraFishes(mutableFlowWithReplay)
                 }
                 )
@@ -75,7 +76,7 @@ class MutableFlow {
                 logger.info("The third fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("una") }}")
                 logger.info("The fourth fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("alo") }}")
             }
-            delay(5000)
+            delay(5000.milliseconds)
             logger.infoTitle("We get all the extra fishes")
         }
 
@@ -83,7 +84,7 @@ class MutableFlow {
             listOf(
                 async {
                     logger.infoText("Sending fishes...")
-                    delay(2000)
+                    delay(2000.milliseconds)
                     mutableFlow.emit("Sardine")
                     mutableFlow.emit("Codfish")
                     logger.infoText("Fishes sent!")

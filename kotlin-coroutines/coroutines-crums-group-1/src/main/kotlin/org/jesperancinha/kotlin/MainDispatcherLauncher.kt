@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.time.LocalDateTime
+import kotlin.time.Duration.Companion.milliseconds
 
 class MainDispatcherLauncher {
 
@@ -19,7 +20,7 @@ class MainDispatcherLauncher {
             try {
                 val job = CoroutineScope(Dispatchers.Main).launch {
                     launch {
-                        delay(100)
+                        delay(100.milliseconds)
                         logger.info("This is cat @ ${LocalDateTime.now()}")
                     }
                     launch {

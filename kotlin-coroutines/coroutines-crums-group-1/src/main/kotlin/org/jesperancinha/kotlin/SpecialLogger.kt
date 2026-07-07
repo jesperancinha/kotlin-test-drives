@@ -6,6 +6,7 @@ import org.jesperancinha.kotlin.Processes.*
 import java.time.LocalDateTime
 import kotlin.system.measureTimeMillis
 import kotlin.coroutines.CoroutineContext
+import kotlin.time.Duration.Companion.milliseconds
 
 private const val WAIT_FOR_REPORT: Long = 3000
 
@@ -46,11 +47,11 @@ fun testLaunch() = runBlocking {
         runCatching {
             CoroutineScope(Dispatchers.IO).launch {
                 logContext(this.coroutineContext, CHEESE_CURD_MAKING)
-                delay(WAIT_BETWEEN_TASKS)
+                delay(WAIT_BETWEEN_TASKS.milliseconds)
                 logTimestamp()
                 launch {
                     logContext(this.coroutineContext, LET_IT_SIT)
-                    delay(WAIT_BETWEEN_TASKS)
+                    delay(WAIT_BETWEEN_TASKS.milliseconds)
                     logTimestamp()
                     generateException()
                 }
@@ -60,11 +61,11 @@ fun testLaunch() = runBlocking {
         }
         launch {
             logContext(this.coroutineContext, MAKE_REPORT)
-            delay(WAIT_FOR_REPORT)
+            delay(WAIT_FOR_REPORT.milliseconds)
             completeReport()
         }
     }
-    delay(WAIT_FOR_PROCESS)
+    delay(WAIT_FOR_PROCESS.milliseconds)
     completeProcess()
 }
 
@@ -76,11 +77,11 @@ fun testRemove() = runBlocking {
         runCatching {
             launch {
                 logContext(this.coroutineContext, CHEESE_CURD_MAKING)
-                delay(WAIT_BETWEEN_TASKS)
+                delay(WAIT_BETWEEN_TASKS.milliseconds)
                 logTimestamp()
                 launch {
                     logContext(this.coroutineContext, LET_IT_SIT)
-                    delay(WAIT_BETWEEN_TASKS)
+                    delay(WAIT_BETWEEN_TASKS.milliseconds)
                     logTimestamp()
                     generateException()
                 }
@@ -90,11 +91,11 @@ fun testRemove() = runBlocking {
         }
         launch {
             logContext(this.coroutineContext, MAKE_REPORT)
-            delay(WAIT_FOR_REPORT)
+            delay(WAIT_FOR_REPORT.milliseconds)
             completeReport()
         }
     }
-    delay(WAIT_FOR_PROCESS)
+    delay(WAIT_FOR_PROCESS.milliseconds)
     completeProcess()
 }
 
@@ -106,11 +107,11 @@ fun testAsync() = runBlocking {
         runCatching {
             CoroutineScope(Dispatchers.IO).async {
                 logContext(this.coroutineContext, CHEESE_CURD_MAKING)
-                delay(WAIT_BETWEEN_TASKS)
+                delay(WAIT_BETWEEN_TASKS.milliseconds)
                 logTimestamp()
                 launch {
                     logContext(this.coroutineContext, LET_IT_SIT)
-                    delay(WAIT_BETWEEN_TASKS)
+                    delay(WAIT_BETWEEN_TASKS.milliseconds)
                     logTimestamp()
                     generateException()
                 }
@@ -120,11 +121,11 @@ fun testAsync() = runBlocking {
         }
         launch {
             logContext(this.coroutineContext, MAKE_REPORT)
-            delay(WAIT_FOR_REPORT)
+            delay(WAIT_FOR_REPORT.milliseconds)
             completeReport()
         }
     }
-    delay(WAIT_FOR_PROCESS)
+    delay(WAIT_FOR_PROCESS.milliseconds)
     completeProcess()
 }
 
@@ -136,11 +137,11 @@ fun testAsyncAndWait() = runBlocking {
         runCatching {
             CoroutineScope(Dispatchers.IO).async {
                 logContext(this.coroutineContext, CHEESE_CURD_MAKING)
-                delay(WAIT_BETWEEN_TASKS)
+                delay(WAIT_BETWEEN_TASKS.milliseconds)
                 logTimestamp()
                 launch {
                     logContext(this.coroutineContext, LET_IT_SIT)
-                    delay(WAIT_BETWEEN_TASKS)
+                    delay(WAIT_BETWEEN_TASKS.milliseconds)
                     logTimestamp()
                     generateException()
                 }
@@ -150,11 +151,11 @@ fun testAsyncAndWait() = runBlocking {
         }
         launch {
             logContext(this.coroutineContext, MAKE_REPORT)
-            delay(WAIT_FOR_REPORT)
+            delay(WAIT_FOR_REPORT.milliseconds)
             completeReport()
         }
     }
-    delay(2 * WAIT_FOR_PROCESS)
+    delay((2 * WAIT_FOR_PROCESS).milliseconds)
     completeProcess()
 }
 

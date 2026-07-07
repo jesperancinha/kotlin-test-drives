@@ -3,6 +3,7 @@ package org.jesperancinha.kotlin.loading
 import kotlinx.coroutines.*
 import java.lang.Thread.sleep
 import kotlin.system.*
+import kotlin.time.Duration.Companion.milliseconds
 
 object LoadingCoroutinesWorkStealExample {
 
@@ -14,7 +15,7 @@ object LoadingCoroutinesWorkStealExample {
         val time = measureTimeMillis {
             repeat(numCores * 2) { index ->
                 jobs += launch(Dispatchers.Default) {
-                    val duration = if (index % 2 == 0) 1000L else 500L
+                    val duration = if (index % 2 == 0) 1000.milliseconds else 500.milliseconds
                     println("Coroutine $index running on ${Thread.currentThread().name} for $duration ms")
                     delay(duration)
                     println("Coroutine $index finished on ${Thread.currentThread().name}")

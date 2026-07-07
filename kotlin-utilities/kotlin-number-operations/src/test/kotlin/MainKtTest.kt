@@ -6,7 +6,7 @@ class MainKtTest {
     @Test
     fun `should test bytes`() {
         var i:Byte = 2
-        var x:Byte = 2
+        val x:Byte = 2
         while (i <= 100) {
             println ( "i is currently $i" ) ;
 //            i = i + x

@@ -2,6 +2,7 @@ package org.jesperancinha.kotlin
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 class TryEmitTrySend {
@@ -21,7 +22,7 @@ class TryEmitTrySend {
                             for (message in messages) {
                                 println("Emitting: $message")
                                 sharedFlow.tryEmit(message)
-                                delay(500)
+                                delay(500.milliseconds)
                             }
                         }
                         jobEmitter.join()

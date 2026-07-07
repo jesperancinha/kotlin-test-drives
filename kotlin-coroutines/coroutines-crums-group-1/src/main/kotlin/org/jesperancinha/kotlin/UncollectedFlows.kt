@@ -5,13 +5,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class UncollectedFlows {
     companion object {
         private fun simpleFlow(): Flow<Int> = flow {
             println("Flow started")
             for (i in 1..3) {
-                delay(1000)
+                delay(1000.milliseconds)
                 println("Emitting $i")
                 emit(i)
             }
@@ -22,7 +23,7 @@ class UncollectedFlows {
                     simpleFlow()
                 }
             println("Flow was launched but not collected")
-                delay(2000)
+                delay(2000.milliseconds)
 
             launch.await().collect {
                 println("Now it is collected $it")

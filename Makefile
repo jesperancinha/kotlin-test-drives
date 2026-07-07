@@ -17,7 +17,7 @@ build-maven:
 	mvn clean install
 build-gradle: clean
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
-	gradle wrapper --gradle-version $(GRADLE_VERSION); \
+	gradle wrapper; \
 	cd kotlin-apps/string-array-paradigms; \
 		make publish
 	gradle --stop
@@ -35,7 +35,7 @@ upgrade:
   		echo "Upgrading $$location..."; \
 	done
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
-	gradle wrapper --gradle-version $(GRADLE_VERSION) --stacktrace;
+	gradle wrapper --stacktrace;
 build-chip-maker:
 	cd kotlin-apps/microchip-maker && mvn clean install
 	cd kotlin-apps/microchip-maker/microchip-maker-gui && gradle build jsTest

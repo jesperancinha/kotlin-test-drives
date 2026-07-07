@@ -9,6 +9,7 @@ import java.time.LocalDateTime
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.system.exitProcess
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 @SpringBootApplication
 open class IOCoroutineLauncher {
@@ -31,7 +32,7 @@ open class IOCoroutineLauncher {
                 withContext(Dispatchers.IO.limitedParallelism(100)) {
                     repeat(100) {
                         launch {
-                            delay(1000)
+                            delay(1000.milliseconds)
                             atomicInteger.addAndGet(1)
                         }
                     }

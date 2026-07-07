@@ -6,6 +6,7 @@ import org.springframework.web.client.RestTemplate
 import java.lang.Thread.sleep
 import java.time.LocalDateTime
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 class NonIOCalls {
     companion object {
@@ -27,7 +28,7 @@ class NonIOCalls {
                         launch {
                             logger.infoBefore("Making call $it at ${LocalDateTime.now()}")
                             RestTemplate()
-                            delay(1000)
+                            delay(1000.milliseconds)
                             logger.infoAfter("Finishing call $it at ${LocalDateTime.now()}")
                         }
                     }
@@ -37,7 +38,7 @@ class NonIOCalls {
                     (0..generateForTwo).forEach {
                         launch {
                             logger.infoBefore("Making call $it at ${LocalDateTime.now()}")
-                            delay(1000)
+                            delay(1000.milliseconds)
                             logger.infoAfter("Finishing call $it at ${LocalDateTime.now()}")
                         }
                     }

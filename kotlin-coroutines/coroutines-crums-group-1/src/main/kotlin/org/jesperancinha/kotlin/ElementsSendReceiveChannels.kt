@@ -5,6 +5,7 @@ import kotlinx.coroutines.channels.Channel
 import java.util.*
 import java.util.concurrent.LinkedBlockingQueue
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 
@@ -16,9 +17,9 @@ class ElementsSendReceiveBlockingChannel {
     private val linkedBlockingQueue by lazy { LinkedBlockingQueue<String>(100) }
     private suspend fun produceItems() {
         val item = fetchItem()
-        delay(PRODUCTION_COST_MS)
+        delay(PRODUCTION_COST_MS.milliseconds)
         linkedBlockingQueue.add(item)
-        delay(PRODUCTION_COST_MS)
+        delay(PRODUCTION_COST_MS.milliseconds)
         linkedBlockingQueue.add(item)
     }
 
@@ -46,7 +47,7 @@ class ElementsSendReceiveChannel {
     private suspend fun produceItems() {
         repeat(5) {
             val item = fetchItem()
-            delay(PRODUCTION_COST_MS)
+            delay(PRODUCTION_COST_MS.milliseconds)
             channel.send(item)
         }
     }
@@ -55,7 +56,7 @@ class ElementsSendReceiveChannel {
     private suspend fun receiveItems() {
         repeat(5) {
             val item = channel.receive()
-            delay(PRODUCTION_COST_MS)
+            delay(PRODUCTION_COST_MS.milliseconds)
             println("Channel received item $item!")
         }
     }
@@ -75,7 +76,7 @@ class ElementsSendReceiveRendezVousChannel {
     private suspend fun produceItems() {
         repeat(5) {
             val item = fetchItem()
-            delay(PRODUCTION_COST_MS)
+            delay(PRODUCTION_COST_MS.milliseconds)
             channel.send(item)
         }
     }
@@ -84,7 +85,7 @@ class ElementsSendReceiveRendezVousChannel {
     private suspend fun receiveItems() {
         repeat(5) {
             val item = channel.receive()
-            delay(PRODUCTION_COST_MS)
+            delay(PRODUCTION_COST_MS.milliseconds)
             println("Channel received item $item!")
         }
     }

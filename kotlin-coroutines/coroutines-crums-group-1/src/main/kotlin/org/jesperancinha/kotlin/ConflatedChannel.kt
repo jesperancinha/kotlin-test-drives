@@ -5,6 +5,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class ConflatedChannel {
     companion object {
@@ -16,7 +17,7 @@ class ConflatedChannel {
                 repeat(5) { value ->
                     println("Sending: $value")
                     conflatedChannel.send(value)
-                    delay(500)
+                    delay(500.milliseconds)
                 }
                 conflatedChannel.close()
             }
@@ -24,7 +25,7 @@ class ConflatedChannel {
             launch {
                 conflatedChannel.receiveAsFlow().collect { value ->
                     println("Received: $value")
-                    delay(1000)
+                    delay(1000.milliseconds)
                 }
             }
         }

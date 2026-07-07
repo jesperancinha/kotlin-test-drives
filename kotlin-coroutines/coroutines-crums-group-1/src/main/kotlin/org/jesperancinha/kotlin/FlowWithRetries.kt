@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.retry
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class FlowWithRetries {
     companion object {
@@ -13,7 +14,7 @@ class FlowWithRetries {
             val flowWithRetry = flow {
                 println("Emitting values...")
                 emit(1)
-                delay(100)
+                delay(100.milliseconds)
                 throw Exception("An error occurred")
             }.retry(3) {
                 println("Error occurred ($it), retrying...")

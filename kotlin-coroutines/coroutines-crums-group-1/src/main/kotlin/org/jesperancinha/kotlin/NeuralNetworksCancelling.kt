@@ -1,6 +1,7 @@
 package org.jesperancinha.kotlin
 
 import kotlinx.coroutines.*
+import kotlin.time.Duration.Companion.milliseconds
 
 object NeuronCancellationException : CancellationException() {
     private fun readResolve(): Any = NeuronCancellationException
@@ -23,13 +24,13 @@ class NeuralNetworksCancelling {
                                 println("NeuronCancellationException - Only this one will be cancelled - Rank:$rank")
                                 throw NeuronCancellationException
                             }
-                            delay(50)
+                            delay(50.milliseconds)
                             println("Prints Level 3 - Rank:$rank")
                         }
-                        delay(50)
+                        delay(50.milliseconds)
                         println("Prints Level 2 - Rank:$rank")
                     }
-                    delay(50)
+                    delay(50.milliseconds)
                     println("Prints Level 1 - Rank:$rank")
                 }
             }.join()
@@ -41,13 +42,13 @@ class NeuralNetworksCancelling {
                                 println("NetworkCancellationException - Only this one will be cancelled - Rank:$rank")
                                 throw NetworkCancellationException
                             }
-                            delay(50)
+                            delay(50.milliseconds)
                             println("Prints Level 3 - Rank:$rank")
                         }
-                        delay(50)
+                        delay(50.milliseconds)
                         println("Prints Level 2 - Rank:$rank")
                     }
-                    delay(50)
+                    delay(50.milliseconds)
                     println("Prints Level 1 - Rank:$rank")
                 }
             }.join()

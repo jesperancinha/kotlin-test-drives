@@ -6,6 +6,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.File
 import kotlin.coroutines.cancellation.CancellationException
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * Chuncked cancellation
@@ -23,7 +24,7 @@ object ChunckedCancellation {
             val chunk = content.substring(position, minOf(position + chunkSize, length))
             file.appendText(chunk)
             position += chunkSize
-            delay(50)
+            delay(50.milliseconds)
         }
 
         if (!isActive) {
@@ -43,10 +44,10 @@ object ChunckedCancellation {
             }
         }
 
-        delay(1000)
+        delay(1000.milliseconds)
         println("Cancelling coroutine...")
         job.cancel()
-        delay(3000)
+        delay(3000.milliseconds)
         println("Main function ends")
 
     }

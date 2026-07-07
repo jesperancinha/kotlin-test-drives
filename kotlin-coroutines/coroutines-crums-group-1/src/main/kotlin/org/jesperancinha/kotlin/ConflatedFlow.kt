@@ -4,6 +4,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class ConflatedFlow {
     companion object {
@@ -13,13 +14,13 @@ class ConflatedFlow {
                 repeat(5) {
                     emit(it)
                     println("Emitting $it")
-                    delay(100)
+                    delay(100.milliseconds)
                 }
             }
                 .conflate()
                 .collect { value ->
                     println("Collecting $value")
-                    delay(400)
+                    delay(400.milliseconds)
                 }
         }
     }

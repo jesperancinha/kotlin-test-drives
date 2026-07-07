@@ -8,6 +8,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class SupervisorJobTest {
     companion object {
@@ -17,7 +18,7 @@ class SupervisorJobTest {
             val scope = CoroutineScope(Default + supervisorJob)
             scope.launch {
                 println("Child 1 is starting...")
-                delay(1000)
+                delay(1000.milliseconds)
                 println("Child 1 completed successfully.")
             }
             scope.launch {
@@ -27,10 +28,10 @@ class SupervisorJobTest {
 
             scope.launch {
                 println("Child 3 is starting...")
-                delay(2000)
+                delay(2000.milliseconds)
                 println("Child 3 completed successfully.")
             }
-            delay(3000)
+            delay(3000.milliseconds)
 
             println("Cancelling the supervisor job...")
             scope.cancel()

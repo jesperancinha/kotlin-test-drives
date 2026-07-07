@@ -2,6 +2,7 @@ package org.jesperancinha.kotlin
 
 import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 class SimulAndroidCancellation(
     val a: Int = 1
@@ -28,7 +29,7 @@ class SimulAndroidCancellation(
             connectionScope = this
             try {
                 println("Started connector simulation")
-                delay(1000)
+                delay(1000.milliseconds)
                 println("Ended connector simulation")
             } catch (_: Exception) {
             }
@@ -41,7 +42,7 @@ class SimulAndroidCancellation(
             measureTimeMillis {
                 onCleared()
             }.let { println("Process took $it milliseconds") }
-            delay(2000)
+            delay(2000.milliseconds)
             println("We should not see the \"End connector...\" message in the end.")
         }
     }

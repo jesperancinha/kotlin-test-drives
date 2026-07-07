@@ -4,6 +4,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class CoroutinesBuffer {
 
@@ -13,7 +14,7 @@ class CoroutinesBuffer {
             val flow = flow {
                 for (i in 1..5) {
                     println("Emitting $i")
-                    delay(100)
+                    delay(100.milliseconds)
                     emit(i)
                 }
             }
@@ -21,7 +22,7 @@ class CoroutinesBuffer {
             println("- Without buffer:")
             flow
                 .collect { value ->
-                    delay(300)
+                    delay(300.milliseconds)
                     println("Collected $value")
                 }
 
@@ -29,7 +30,7 @@ class CoroutinesBuffer {
             flow
                 .buffer()
                 .collect { value ->
-                    delay(300)
+                    delay(300.milliseconds)
                     println("Collected $value")
                 }
         }

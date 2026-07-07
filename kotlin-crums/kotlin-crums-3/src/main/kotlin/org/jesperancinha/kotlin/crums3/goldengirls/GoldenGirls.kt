@@ -3,7 +3,7 @@ package org.jesperancinha.kotlin.crums3.goldengirls
 import org.jesperancinha.kotlin.crums3.goldengirls.javaversion.*
 
 data class GoldenGirls(
-    var goldenGirl1: String = "Dorothy Zbornak",
+    val goldenGirl1: String = "Dorothy Zbornak",
     private val goldenGirl2: String = "Rose Nylund",
     private val goldenGirl3: String = "Blanche Devereaux",
     private val goldenGirl4: String = "Sophia Petrillo"

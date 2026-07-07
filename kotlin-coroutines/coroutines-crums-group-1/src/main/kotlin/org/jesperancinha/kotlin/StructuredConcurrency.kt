@@ -9,6 +9,7 @@ import org.jesperancinha.kotlin.StandardStructuredConcurrency.Companion.testBLoc
 import org.jesperancinha.kotlin.StandardStructuredConcurrency.Companion.testBlockingLaunchDispatchersIO
 import java.time.LocalDateTime
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 class StructuredConcurrency {
     companion object {
@@ -53,7 +54,7 @@ class CancellationStructuredConcurrency {
                             logCoroutinesWithADelayOf(2, 1000)
                         }
                         launch {
-                            delay(500)
+                            delay(500.milliseconds)
                             throw RuntimeException("Nothing runs now!")
                         }
                         println("This coroutine scope is launched here! $coroutineContext")
@@ -75,7 +76,7 @@ class CancellationStructuredConcurrency {
                         }
                         launch {
                             launch {
-                                delay(500)
+                                delay(500.milliseconds)
                                 throw RuntimeException("Nothing runs now!")
                             }
                             logCoroutinesWithADelayOf(2, 1000)
@@ -99,7 +100,7 @@ class CancellationStructuredConcurrency {
                             logCoroutinesWithADelayOf(2, 1000)
                         }
                         launch {
-                            delay(500)
+                            delay(500.milliseconds)
                             throw RuntimeException("Nothing runs now!")
                         }
                         println("--------")
@@ -161,7 +162,7 @@ class StandardStructuredConcurrency {
 
         suspend fun logCoroutinesWithADelayOf(id: Long, delay: Long) = coroutineScope {
             println("($id) I'm coroutine 1 on thread ${Thread.currentThread()}")
-            delay(delay)
+            delay(delay.milliseconds)
             println(
                 "($id) I'm coroutine 1 on thread ${
                     Thread.currentThread()

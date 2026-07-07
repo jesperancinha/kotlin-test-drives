@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.runBlocking
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 class FlowsCombined {
     companion object {
@@ -20,7 +21,7 @@ class FlowsCombined {
                 var value = 1
                 while (value <= 5) {
                     emit(value)
-                    delay(300)
+                    delay(300.milliseconds)
                     value++
                 }
             }
@@ -29,7 +30,7 @@ class FlowsCombined {
                 val letters = listOf("A", "B", "C", "D", "E")
                 for (letter in letters) {
                     emit(letter)
-                    delay(500)
+                    delay(500.milliseconds)
                 }
             }
             

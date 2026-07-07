@@ -13,6 +13,6 @@ debug:
 	gradle clean build test jacocoTestReport -i --stacktrace --debug
 	./gradlew --stacktrace --debug
 upgrade:
-	gradle wrapper --gradle-version $(GRADLE_VERSION)
+	gradle wrapper
 upgrade-mac-os:
 	brew upgrade gradle

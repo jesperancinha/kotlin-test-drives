@@ -3,6 +3,7 @@ package org.jesperancinha.kotlin
 import kotlinx.coroutines.*
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import java.time.LocalDateTime
+import kotlin.time.Duration.Companion.milliseconds
 
 class UnconfinedCats {
 
@@ -17,7 +18,7 @@ private suspend fun runUnconfinedCoroutinesTest() {
     val job = CoroutineScope(Dispatchers.Unconfined).launch {
         launch {
             logger.infoThread("Cat Before thread ==> ${Thread.currentThread()}")
-            delay(100)
+            delay(100.milliseconds)
             logger.info("This is cat @ ${LocalDateTime.now()}")
             logger.info("Cat context $coroutineContext")
             logger.infoThread("Cat After Resume thread ==> ${Thread.currentThread()}")

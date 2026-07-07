@@ -6,6 +6,7 @@ import kotlinx.coroutines.launch
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import java.lang.Math.random
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * Created by jofisaes on 09/07/2021
@@ -31,7 +32,7 @@ class CrumSix {
                         .reset()
                 }
             }
-            delay(300)
+            delay(300.milliseconds)
             ConsolerizerComposer.outSpace()
                 .yellow("Triggering all subroutines cost $timing milliseconds")
                 .reset()
@@ -40,11 +41,11 @@ class CrumSix {
 }
 
 suspend fun getSomething(): Double {
-    delay(100)
+    delay(100.milliseconds)
     return random()
 }
 
 suspend fun getSomething2(): Double {
-    delay(100)
+    delay(100.milliseconds)
     return random()
 }

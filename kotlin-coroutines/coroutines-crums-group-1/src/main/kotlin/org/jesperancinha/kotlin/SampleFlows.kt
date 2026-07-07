@@ -5,6 +5,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.sample
 import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.milliseconds
 
 class SampleFlows {
     companion object {
@@ -14,7 +15,7 @@ class SampleFlows {
             val flow = flow {
                 repeat(10) {
                     emit(it)
-                    delay(100)
+                    delay(100.milliseconds)
                 }
             }
 

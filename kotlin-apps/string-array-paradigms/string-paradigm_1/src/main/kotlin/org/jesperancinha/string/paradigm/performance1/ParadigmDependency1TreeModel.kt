@@ -44,7 +44,7 @@ class ParadigmDependency1TreeModel : DefaultTreeModel(null), SegmentTreeModel {
         codeIndex: Int
     ): DefaultMutableTreeNode {
         val subDependency: String? = dependency.getSubDependencyElement(codeIndex)?.intern()
-        var child: DefaultMutableTreeNode? = parent?.let {
+        var child: DefaultMutableTreeNode? = parent.let {
             subDependency?.let { it1 ->
                 try {
                     findChild(it, it1)

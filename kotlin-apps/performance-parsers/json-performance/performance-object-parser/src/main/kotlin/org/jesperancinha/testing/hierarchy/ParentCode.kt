@@ -1,7 +1,7 @@
 package org.jesperancinha.testing.hierarchy
 
 class ParentCode : Code {
-    var childCodes: MutableMap<String?, Code?> = HashMap()
+    val childCodes: MutableMap<String?, Code?> = HashMap()
 
     constructor(name: String?, comment: String?) : super(name, comment) {
         this.name = name
