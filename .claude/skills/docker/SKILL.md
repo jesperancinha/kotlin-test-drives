@@ -19,6 +19,23 @@ Then it should be updated to:
 FROM eclipse-temurin:25-alpine
 ```
 
+### Example 2:
+
+This example is only valid for CircleCI configuration files located in `.circleci/config.yml`.
+Replace this:
+
+```yml
+    docker:
+      - image: eclipse-temurin:21-alpine
+```
+
+with:
+
+```yml
+    docker:
+      - image: eclipse-temurin:25-alpine
+```
+
 ## 2. Checklist
 
 [] No Dockerfile should use older Java version images

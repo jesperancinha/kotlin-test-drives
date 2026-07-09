@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build-and-test:
     docker:
-      - image: eclipse-temurin:21-alpine
+      - image: eclipse-temurin:25-alpine
     steps:
       - run: apk add maven make
       - run: apk update && apk upgrade

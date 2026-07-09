@@ -9,9 +9,6 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
-/**
- * Created by joao on 21-2-16.
- */
 @ExtendWith(VertxExtension::class)
 class FinanceVerticalTest(
     val context: VertxTestContext

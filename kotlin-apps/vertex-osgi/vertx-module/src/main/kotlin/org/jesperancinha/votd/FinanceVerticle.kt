@@ -4,9 +4,6 @@ import io.vertx.core.AbstractVerticle
 import io.vertx.core.Promise
 import io.vertx.core.http.HttpServerRequest
 
-/**
- * Created by joao on 21-2-16.
- */
 class FinanceVerticle : AbstractVerticle() {
     @Throws(Exception::class)
     override fun start(startPromise: Promise<Void>) {
