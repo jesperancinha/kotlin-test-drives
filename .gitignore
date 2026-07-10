@@ -58,3 +58,6 @@ largefile.txt
 
 # Generated files
 dependabot.yml.bak
+
+# Junie
+.output*.txt
